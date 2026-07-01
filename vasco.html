@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Motors | Projeto Escolar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #0b0b0b;
+            color: #ffffff;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: #111;
+            border-bottom: 1px solid #222;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .logo span {
+            color: #ff3333;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            margin-left: 30px;
+        }
+        nav ul li a {
+            color: #bbb;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+        .hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(11,11,11,1)), #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .cars-section {
+            padding: 50px 8%;
+        }
+        .cars-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .car-card {
+            background-color: #161616;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #222;
+            padding: 20px;
+        }
+        .car-img {
+            height: 180px;
+            background-color: #333; /* Cor caso a foto falhe */
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        .bg-car-1 { background: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=600') center/cover; }
+        .bg-car-2 { background: url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=600') center/cover; }
+        .bg-car-3 { background: url('https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=600') center/cover; }
+        .car-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .car-info p {
+            color: #270101;
+            font-size: 14px;
+        }
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">APEX <span>MOTORS</span></div>
+        <nav>
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Modelos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div>
+            <h1>A VERDADEIRA PERFORMANCE</h1>
+            <p>Sente a adrenalina dos supercarros.</p>
+        </div>
+    </section>
+
+    <section class="cars-section">
+        <h2>Modelos em Destaque</h2>
+        <div class="cars-grid">
+            
+            <div class="car-card">
+                <div class="car-img bg-car-1"></div>
+                <div class="car-info">
+                    <h3>Furious V8</h3>
+                    <p>750 CV | 0-100 km/h em 2.8s</p>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <div class="car-img bg-car-2"></div>
+                <div class="car-info">
+                    <h3>Hyper Stealth</h3>
+                    <p>900 CV | Elétrico Híbrido</p>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <div class="car-img bg-car-3"></div>
+                <div class="car-info">
+                    <h3>Monza GT</h3>
+                    <p>820 CV | Motor V12</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Apex Motors - Projeto Escolar</p>
+    </footer>
+
+</body>
+</html>
