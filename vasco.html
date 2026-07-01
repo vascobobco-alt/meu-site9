@@ -9,161 +9,247 @@
     
 </body>
 </html>
+device-width
 <!DOCTYPE html>
-<!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apex Motors | Projeto Escolar</title>
+    <title>NitroDrive | Carros Esportivos</title>
     <style>
+        /* Estilos Gerais */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: sans-serif;
-            scroll-behavior: smooth;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+
         body {
-            background-color: #0b0b0b;
-            color: #ffffff;
+            background-color: #0b0c10;
+            color: #fff;
         }
-        .navbar {
+
+        /* Cabeçalho */
+        header {
+            background-color: #1f2833;
+            padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 8%;
-            background-color: #111;
-            border-bottom: 1px solid #222;
+            border-bottom: 3px solid #ff003c;
         }
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .logo span {
-            color: #ff3333;
-        }
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        nav ul li {
-            margin-left: 30px;
-        }
-        nav ul li a {
-            color: #bbb;
-            text-decoration: none;
+
+        header h1 {
+            color: #ff003c;
+            font-size: 28px;
             text-transform: uppercase;
-            font-size: 14px;
+            letter-spacing: 2px;
         }
-        .hero {
-            height: 60vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(11,11,11,1)), #222;
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff003c;
+        }
+
+        /* Banner Principal */
+        .banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            height: 400px;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
             text-align: center;
-        }
-        .hero h1 {
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
-        .cars-section {
-            padding: 50px 8%;
-        }
-        .cars-section h2 {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        .cars-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-        .car-card {
-            background-color: #161616;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #222;
             padding: 20px;
         }
-        .car-img {
-            height: 180px;
-            background-color: #333; /* Cor caso a foto falhe */
-            border-radius: 6px;
-            margin-bottom: 15px;
+
+        .banner h2 {
+            font-size: 42px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
         }
-        .bg-car-1 { background: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=600') center/cover; }
-        .bg-car-2 { background: url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=600') center/cover; }
-        .bg-car-3 { background: url('https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=600') center/cover; }
-        .car-info h3 {
-            font-size: 20px;
+
+        .banner p {
+            font-size: 18px;
+            color: #c5a059;
+            margin-bottom: 20px;
+        }
+
+        /* Grid de Carros */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 20px;
+            border-left: 5px solid #ff003c;
+            padding-left: 10px;
+            text-transform: uppercase;
+        }
+
+        .grid-carros {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* Card do Carro */
+        .card {
+            background-color: #1f2833;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 22px;
             margin-bottom: 10px;
         }
-        .car-info p {
-            color: #270101;
+
+        .card-specs {
+            list-style: none;
+            margin-bottom: 15px;
+            color: #95a5a6;
             font-size: 14px;
         }
-        footer {
+
+        .card-specs li {
+            margin-bottom: 5px;
+        }
+
+        .btn-detalhes {
+            display: inline-block;
+            background-color: #ff003c;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: bold;
             text-align: center;
-            padding: 30px;
-            color: #555;
-            font-size: 12px;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        .btn-detalhes:hover {
+            background-color: #cc0030;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #1f2833;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #95a5a6;
         }
     </style>
 </head>
 <body>
 
-    <header class="navbar">
-        <div class="logo">APEX <span>MOTORS</span></div>
+    <header>
+        <h1>NitroDrive</h1>
         <nav>
-            <ul>
-                <li><a href="#">Início</a></li>
-                <li><a href="#">Modelos</a></li>
-            </ul>
+            <a href="#">Home</a>
+            <a href="#">Variedades</a>
+            <a href="#">Superesportivos</a>
+            <a href="#">Contato</a>
         </nav>
     </header>
 
-    <section class="hero">
-        <div>
-            <h1>A VERDADEIRA PERFORMANCE</h1>
-            <p>Sente a adrenalina dos supercarros.</p>
-        </div>
+    <section class="banner">
+        <h2>Sinta a Verdadeira Velocidade</h2>
+        <p>A maior variedade de superesportivos e carros de alta performance do mercado.</p>
     </section>
 
-    <section class="cars-section">
-        <h2>Modelos em Destaque</h2>
-        <div class="cars-grid">
+    <main class="container">
+        <h3 class="section-title">Modelos Disponíveis</h3>
+        
+        <div class="grid-carros">
             
-            <div class="car-card">
-                <div class="car-img bg-car-1"></div>
-                <div class="car-info">
-                    <h3>Furious V8</h3>
-                    <p>750 CV | 0-100 km/h em 2.8s</p>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=500&q=80" alt="Porsche 911">
+                <div class="card-content">
+                    <h4 class="card-title">Porsche 911 Turbo S</h4>
+                    <ul class="card-specs">
+                        <li><strong>Motor:</strong> 3.7 V6 Biturbo</li>
+                        <li><strong>Potência:</strong> 650 cv</li>
+                        <li><strong>0 a 100 km/h:</strong> 2.7s</li>
+                    </ul>
+                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
                 </div>
             </div>
 
-            <div class="car-card">
-                <div class="car-img bg-car-2"></div>
-                <div class="car-info">
-                    <h3>Hyper Stealth</h3>
-                    <p>900 CV | Elétrico Híbrido</p>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=500&q=80" alt="Ferrari F8">
+                <div class="card-content">
+                    <h4 class="card-title">Ferrari F8 Tributo</h4>
+                    <ul class="card-specs">
+                        <li><strong>Motor:</strong> 3.9 V8 Turbo</li>
+                        <li><strong>Potência:</strong> 720 cv</li>
+                        <li><strong>0 a 100 km/h:</strong> 2.9s</li>
+                    </ul>
+                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
                 </div>
             </div>
 
-            <div class="car-card">
-                <div class="car-img bg-car-3"></div>
-                <div class="car-info">
-                    <h3>Monza GT</h3>
-                    <p>820 CV | Motor V12</p>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=500&q=80" alt="Mercedes AMG">
+                <div class="card-content">
+                    <h4 class="card-title">Mercedes-AMG GT R</h4>
+                    <ul class="card-specs">
+                        <li><strong>Motor:</strong> 4.0 V8 Biturbo</li>
+                        <li><strong>Potência:</strong> 585 cv</li>
+                        <li><strong>0 a 100 km/h:</strong> 3.6s</li>
+                    </ul>
+                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1627454820516-dc767bcb4d3e?auto=format&fit=crop&w=500&q=80" alt="Lamborghini Huracan">
+                <div class="card-content">
+                    <h4 class="card-title">Lamborghini Huracán</h4>
+                    <ul class="card-specs">
+                        <li><strong>Motor:</strong> 5.2 V10 Aspirado</li>
+                        <li><strong>Potência:</strong> 640 cv</li>
+                        <li><strong>0 a 100 km/h:</strong> 2.9s</li>
+                    </ul>
+                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
                 </div>
             </div>
 
         </div>
-    </section>
+    </main>
 
     <footer>
-        <p>&copy; 2026 Apex Motors - Projeto Escolar</p>
+        <p>&copy; 2026 NitroDrive Catalogs. Todos os direitos reservados.</p>
     </footer>
 
 </body>
