@@ -9,13 +9,12 @@
     
 </body>
 </html>
-device-width
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NitroDrive | Carros Esportivos</title>
+    <title>Mundo dos Esportivos | 1000 Cavalos de Potência</title>
     <style>
         /* Estilos Gerais */
         * {
@@ -26,231 +25,226 @@ device-width
         }
 
         body {
-            background-color: #0b0c10;
-            color: #fff;
+            background-color: #0b0b0b;
+            color: #ffffff;
+            line-height: 1.6;
         }
 
-        /* Cabeçalho */
         header {
-            background-color: #1f2833;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 3px solid #ff003c;
+            background: linear-gradient(135deg, #111, #ff3333);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 4px solid #ff1111;
         }
 
         header h1 {
-            color: #ff003c;
-            font-size: 28px;
+            font-size: 2.5rem;
             text-transform: uppercase;
             letter-spacing: 2px;
+            margin-bottom: 0.5rem;
         }
 
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: bold;
-            transition: 0.3s;
+        header p {
+            font-size: 1.1rem;
+            color: #ccc;
         }
 
-        nav a:hover {
-            color: #ff003c;
-        }
-
-        /* Banner Principal */
-        .banner {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
-            height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .banner h2 {
-            font-size: 42px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        .banner p {
-            font-size: 18px;
-            color: #c5a059;
-            margin-bottom: 20px;
-        }
-
-        /* Grid de Carros */
+        /* Seção de Destaques */
         .container {
             max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
+            margin: 2rem auto;
+            padding: 0 1rem;
         }
 
-        .section-title {
-            font-size: 28px;
-            margin-bottom: 20px;
-            border-left: 5px solid #ff003c;
-            padding-left: 10px;
-            text-transform: uppercase;
-        }
-
-        .grid-carros {
+        .categorias {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
         }
 
-        /* Card do Carro */
         .card {
-            background-color: #1f2833;
+            background-color: #1a1a1a;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            transition: transform 0.3s;
+            border: 1px solid #333;
+            transition: transform 0.3s, border-color 0.3s;
         }
 
         .card:hover {
             transform: translateY(-5px);
-        }
-
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+            border-color: #ff3333;
         }
 
         .card-content {
-            padding: 20px;
+            padding: 1.5rem;
         }
 
-        .card-title {
-            font-size: 22px;
-            margin-bottom: 10px;
+        .card-content h3 {
+            color: #ff3333;
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
         }
 
-        .card-specs {
-            list-style: none;
-            margin-bottom: 15px;
-            color: #95a5a6;
-            font-size: 14px;
-        }
-
-        .card-specs li {
-            margin-bottom: 5px;
-        }
-
-        .btn-detalhes {
-            display: inline-block;
-            background-color: #ff003c;
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            font-weight: bold;
+        /* Buscador e Lista de Carros */
+        .search-section {
+            background-color: #141414;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid #222;
             text-align: center;
+        }
+
+        .search-box {
             width: 100%;
-            transition: 0.3s;
+            max-width: 500px;
+            padding: 0.8rem;
+            border-radius: 25px;
+            border: 2px solid #333;
+            background-color: #000;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+            margin-top: 1rem;
         }
 
-        .btn-detalhes:hover {
-            background-color: #cc0030;
+        .search-box:focus {
+            border-color: #ff3333;
         }
 
-        /* Rodapé */
-        footer {
-            background-color: #1f2833;
+        .car-list {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        /* Custom Scrollbar para a lista */
+        .car-list::-webkit-scrollbar {
+            width: 8px;
+        }
+        .car-list::-webkit-scrollbar-track {
+            background: #111;
+        }
+        .car-list::-webkit-scrollbar-thumb {
+            background: #ff3333;
+            border-radius: 4px;
+        }
+
+        .car-item {
+            background-color: #222;
+            padding: 0.8rem;
+            border-radius: 5px;
             text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            font-size: 14px;
-            color: #95a5a6;
+            font-weight: bold;
+            font-size: 0.9rem;
+            border-left: 3px solid #ff3333;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #050505;
+            color: #666;
+            margin-top: 4rem;
+            border-top: 1px solid #111;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>NitroDrive</h1>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Variedades</a>
-            <a href="#">Superesportivos</a>
-            <a href="#">Contato</a>
-        </nav>
+        <h1>Garagem Super Esportiva</h1>
+        <p>A maior enciclopédia de máquinas de alta performance do mundo</p>
     </header>
 
-    <section class="banner">
-        <h2>Sinta a Verdadeira Velocidade</h2>
-        <p>A maior variedade de superesportivos e carros de alta performance do mercado.</p>
-    </section>
-
-    <main class="container">
-        <h3 class="section-title">Modelos Disponíveis</h3>
+    <div class="container">
         
-        <div class="grid-carros">
-            
+        <div class="categorias">
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=500&q=80" alt="Porsche 911">
                 <div class="card-content">
-                    <h4 class="card-title">Porsche 911 Turbo S</h4>
-                    <ul class="card-specs">
-                        <li><strong>Motor:</strong> 3.7 V6 Biturbo</li>
-                        <li><strong>Potência:</strong> 650 cv</li>
-                        <li><strong>0 a 100 km/h:</strong> 2.7s</li>
-                    </ul>
-                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                    <h3>Hypercars</h3>
+                    <p>O topo da engenharia automotiva. Modelos que passam dos 400 km/h e desafiam as leis da física.</p>
                 </div>
             </div>
-
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=500&q=80" alt="Ferrari F8">
                 <div class="card-content">
-                    <h4 class="card-title">Ferrari F8 Tributo</h4>
-                    <ul class="card-specs">
-                        <li><strong>Motor:</strong> 3.9 V8 Turbo</li>
-                        <li><strong>Potência:</strong> 720 cv</li>
-                        <li><strong>0 a 100 km/h:</strong> 2.9s</li>
-                    </ul>
-                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                    <h3>Supercars</h3>
+                    <p>Design agressivo, motores centrais e roncos inconfundíveis. O sonho de consumo das pistas.</p>
                 </div>
             </div>
-
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=500&q=80" alt="Mercedes AMG">
                 <div class="card-content">
-                    <h4 class="card-title">Mercedes-AMG GT R</h4>
-                    <ul class="card-specs">
-                        <li><strong>Motor:</strong> 4.0 V8 Biturbo</li>
-                        <li><strong>Potência:</strong> 585 cv</li>
-                        <li><strong>0 a 100 km/h:</strong> 3.6s</li>
-                    </ul>
-                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                    <h3>JDM Legados</h3>
+                    <p>Os ícones japoneses modificados que dominam a cultura pop e as ruas.</p>
                 </div>
             </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1627454820516-dc767bcb4d3e?auto=format&fit=crop&w=500&q=80" alt="Lamborghini Huracan">
-                <div class="card-content">
-                    <h4 class="card-title">Lamborghini Huracán</h4>
-                    <ul class="card-specs">
-                        <li><strong>Motor:</strong> 5.2 V10 Aspirado</li>
-                        <li><strong>Potência:</strong> 640 cv</li>
-                        <li><strong>0 a 100 km/h:</strong> 2.9s</li>
-                    </ul>
-                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
-                </div>
-            </div>
-
         </div>
-    </main>
+
+        <div class="search-section">
+            <h2>Explore os Modelos</h2>
+            <p>Use o campo abaixo para filtrar nossa base de dados de carros esportivos.</p>
+            <input type="text" id="searchInput" class="search-box" placeholder="Digite uma marca ou modelo (Ex: Ferrari, Porsche)...">
+            
+            <div class="car-list" id="carList">
+                </div>
+        </div>
+
+    </div>
 
     <footer>
-        <p>&copy; 2026 NitroDrive Catalogs. Todos os direitos reservados.</p>
+        <p>&copy; 2026 Garagem Super Esportiva - O Guia Supremo dos Apaixonados por Velocidade.</p>
     </footer>
 
+    <script>
+        // Base de dados de exemplo (Você pode adicionar quantos quiser aqui até chegar em 1000!)
+        const carros = [
+            "Ferrari LaFerrari", "Ferrari 488 Pista", "Ferrari SF90 Stradale", "Ferrari F40", "Ferrari Enzo",
+            "Porsche 911 GT3 RS", "Porsche 918 Spyder", "Porsche Cayman GT4", "Porsche Carrera GT",
+            "Lamborghini Aventador SVJ", "Lamborghini Huracán Performante", "Lamborghini Countach", "Lamborghini Veneno",
+            "McLaren P1", "McLaren 720S", "McLaren Senna", "McLaren F1",
+            "Bugatti Chiron", "Bugatti Veyron", "Bugatti Bolide",
+            "Koenigsegg Jesko", "Koenigsegg Regera", "Koenigsegg Agera RS",
+            "Pagani Huayra BC", "Pagani Zonda Cinque",
+            "Nissan GT-R Nismo", "Toyota Supra MK4", "Mazda RX-7", "Honda NSX",
+            "Chevrolet Corvette Z06", "Ford GT", "Dodge Viper ACR", "Aston Martin Valkyrie"
+        ];
+
+        const carListContainer = document.getElementById('carList');
+        const searchInput = document.getElementById('searchInput');
+
+        // Função para renderizar a lista de carros
+        function renderCars(filterText = "") {
+            carListContainer.innerHTML = ""; // Limpa a lista
+            
+            const filteredCars = carros.filter(carro => 
+                carro.toLowerCase().includes(filterText.toLowerCase())
+            );
+
+            if (filteredCars.length === 0) {
+                carListContainer.innerHTML = "<p style='grid-column: 1/-1; color: #666;'>Nenhum carro encontrado.</p>";
+                return;
+            }
+
+            filteredCars.forEach(carro => {
+                const div = document.createElement('div');
+                div.className = 'car-item';
+                div.textContent = carro;
+                carListContainer.appendChild(div);
+            });
+        }
+
+        // Escuta o campo de busca
+        searchInput.addEventListener('input', (e) => {
+            renderCars(e.target.value);
+        });
+
+        // Inicializa a lista na tela
+        renderCars();
+    </script>
 </body>
 </html>
