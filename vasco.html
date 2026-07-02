@@ -8,243 +8,157 @@
 <body>
     
 </body>
-</html>
-<!DOCTYPE html>
+</html><!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo dos Esportivos | 1000 Cavalos de Potência</title>
+    <title>Site de Carros Simples</title>
     <style>
-        /* Estilos Gerais */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
+        /* Cores e visual do site */
         body {
-            background-color: #0b0b0b;
-            color: #ffffff;
-            line-height: 1.6;
-        }
-
-        header {
-            background: linear-gradient(135deg, #111, #ff3333);
-            padding: 2rem;
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
             text-align: center;
-            border-bottom: 4px solid #ff1111;
+            padding: 20px;
         }
 
-        header h1 {
-            font-size: 2.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            font-size: 1.1rem;
-            color: #ccc;
-        }
-
-        /* Seção de Destaques */
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        .categorias {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .card {
-            background-color: #1a1a1a;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #333;
-            transition: transform 0.3s, border-color 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: #ff3333;
-        }
-
-        .card-content {
-            padding: 1.5rem;
-        }
-
-        .card-content h3 {
-            color: #ff3333;
-            margin-bottom: 0.5rem;
-            font-size: 1.4rem;
-        }
-
-        /* Buscador e Lista de Carros */
-        .search-section {
-            background-color: #141414;
-            padding: 2rem;
-            border-radius: 8px;
-            border: 1px solid #222;
-            text-align: center;
-        }
-
-        .search-box {
-            width: 100%;
-            max-width: 500px;
-            padding: 0.8rem;
-            border-radius: 25px;
-            border: 2px solid #333;
-            background-color: #000;
-            color: #fff;
-            font-size: 1rem;
-            outline: none;
-            transition: border-color 0.3s;
-            margin-top: 1rem;
-        }
-
-        .search-box:focus {
-            border-color: #ff3333;
-        }
-
-        .car-list {
-            margin-top: 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1rem;
-            max-height: 400px;
-            overflow-y: auto;
-            padding-right: 10px;
-        }
-
-        /* Custom Scrollbar para a lista */
-        .car-list::-webkit-scrollbar {
-            width: 8px;
-        }
-        .car-list::-webkit-scrollbar-track {
-            background: #111;
-        }
-        .car-list::-webkit-scrollbar-thumb {
-            background: #ff3333;
-            border-radius: 4px;
-        }
-
-        .car-item {
-            background-color: #222;
-            padding: 0.8rem;
+        /* Barra de pesquisa */
+        .busca {
+            padding: 10px;
+            width: 80%;
+            max-width: 400px;
             border-radius: 5px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 0.9rem;
-            border-left: 3px solid #ff3333;
+            border: none;
+            margin-bottom: 20px;
+            font-size: 16px;
         }
 
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background-color: #050505;
-            color: #666;
-            margin-top: 4rem;
-            border-top: 1px solid #111;
+        /* Grade onde ficam os carros */
+        .grade {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Cartão de cada carro */
+        .cartao {
+            background-color: #1e1e1e;
+            border: 2px solid #333;
+            border-radius: 10px;
+            width: 280px;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .cartao img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .marca {
+            color: #ff3333;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .nome {
+            font-size: 20px;
+            margin: 5px 0;
+        }
+
+        .info {
+            font-size: 14px;
+            color: #bbb;
+            margin-bottom: 10px;
+        }
+
+        /* Botão Curtir */
+        .btn-curtir {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+        }
+
+        .btn-curtir.curtido {
+            background-color: #ff3333;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Garagem Super Esportiva</h1>
-        <p>A maior enciclopédia de máquinas de alta performance do mundo</p>
-    </header>
+    <h1>Garagem de Esportivos</h1>
+    <p>Digite o nome do carro para filtrar a lista e clique em curtir!</p>
 
-    <div class="container">
-        
-        <div class="categorias">
-            <div class="card">
-                <div class="card-content">
-                    <h3>Hypercars</h3>
-                    <p>O topo da engenharia automotiva. Modelos que passam dos 400 km/h e desafiam as leis da física.</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-content">
-                    <h3>Supercars</h3>
-                    <p>Design agressivo, motores centrais e roncos inconfundíveis. O sonho de consumo das pistas.</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-content">
-                    <h3>JDM Legados</h3>
-                    <p>Os ícones japoneses modificados que dominam a cultura pop e as ruas.</p>
-                </div>
-            </div>
-        </div>
+    <input type="text" id="campoBusca" class="busca" placeholder="Pesquise um carro...">
 
-        <div class="search-section">
-            <h2>Explore os Modelos</h2>
-            <p>Use o campo abaixo para filtrar nossa base de dados de carros esportivos.</p>
-            <input type="text" id="searchInput" class="search-box" placeholder="Digite uma marca ou modelo (Ex: Ferrari, Porsche)...">
-            
-            <div class="car-list" id="carList">
-                </div>
-        </div>
-
-    </div>
-
-    <footer>
-        <p>&copy; 2026 Garagem Super Esportiva - O Guia Supremo dos Apaixonados por Velocidade.</p>
-    </footer>
+    <div id="listaCarros" class="grade"></div>
 
     <script>
-        // Base de dados de exemplo (Você pode adicionar quantos quiser aqui até chegar em 1000!)
+        // Dados dos carros (Lista simples)
         const carros = [
-            "Ferrari LaFerrari", "Ferrari 488 Pista", "Ferrari SF90 Stradale", "Ferrari F40", "Ferrari Enzo",
-            "Porsche 911 GT3 RS", "Porsche 918 Spyder", "Porsche Cayman GT4", "Porsche Carrera GT",
-            "Lamborghini Aventador SVJ", "Lamborghini Huracán Performante", "Lamborghini Countach", "Lamborghini Veneno",
-            "McLaren P1", "McLaren 720S", "McLaren Senna", "McLaren F1",
-            "Bugatti Chiron", "Bugatti Veyron", "Bugatti Bolide",
-            "Koenigsegg Jesko", "Koenigsegg Regera", "Koenigsegg Agera RS",
-            "Pagani Huayra BC", "Pagani Zonda Cinque",
-            "Nissan GT-R Nismo", "Toyota Supra MK4", "Mazda RX-7", "Honda NSX",
-            "Chevrolet Corvette Z06", "Ford GT", "Dodge Viper ACR", "Aston Martin Valkyrie"
+            { nome: "911 GT3 RS", marca: "Porsche", potencia: "525 cv", imagem: "https://images.unsplash.com/photo-1718018314545-cfa97607fc54?w=400" },
+            { nome: "Aventador SVJ", marca: "Lamborghini", potencia: "770 cv", imagem: "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=400" },
+            { nome: "488 Pista", marca: "Ferrari", potencia: "720 cv", imagem: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=400" },
+            { nome: "720S Spider", marca: "McLaren", potencia: "720 cv", imagem: "https://images.unsplash.com/photo-1621135802920-133df287f89c?w=400" }
         ];
 
-        const carListContainer = document.getElementById('carList');
-        const searchInput = document.getElementById('searchInput');
+        const listaDiv = document.getElementById('listaCarros');
+        const campoBusca = document.getElementById('campoBusca');
 
-        // Função para renderizar a lista de carros
-        function renderCars(filterText = "") {
-            carListContainer.innerHTML = ""; // Limpa a lista
-            
-            const filteredCars = carros.filter(carro => 
-                carro.toLowerCase().includes(filterText.toLowerCase())
-            );
+        // Função para mostrar os carros na tela
+        function mostrarCarros(filtro = "") {
+            listaDiv.innerHTML = ""; // Limpa a tela antes de desenhar
 
-            if (filteredCars.length === 0) {
-                carListContainer.innerHTML = "<p style='grid-column: 1/-1; color: #666;'>Nenhum carro encontrado.</p>";
-                return;
-            }
+            carros.forEach(carro => {
+                // Se o que o usuário digitou não bater com o nome ou marca, pula esse carro
+                if (!carro.nome.toLowerCase().includes(filtro.toLowerCase()) && 
+                    !carro.marca.toLowerCase().includes(filtro.toLowerCase())) {
+                    return; 
+                }
 
-            filteredCars.forEach(carro => {
-                const div = document.createElement('div');
-                div.className = 'car-item';
-                div.textContent = carro;
-                carListContainer.appendChild(div);
+                // Cria o HTML do cartão do carro
+                const cartao = document.createElement('div');
+                cartao.className = 'cartao';
+                cartao.innerHTML = `
+                    <img src="${carro.imagem}" alt="${carro.nome}">
+                    <div class="marca">${carro.marca}</div>
+                    <div class="nome">${carro.nome}</div>
+                    <div class="info">Potência: ${carro.potencia}</div>
+                    <button class="btn-curtir" onclick="curtir(this)">Curtir ♥</button>
+                `;
+                
+                listaDiv.appendChild(cartao);
             });
         }
 
-        // Escuta o campo de busca
-        searchInput.addEventListener('input', (e) => {
-            renderCars(e.target.value);
+        // Função interativa para mudar a cor do botão ao clicar
+        function curtir(botao) {
+            botao.classList.toggle('curtido');
+            if (botao.classList.contains('curtido')) {
+                botao.innerText = "Curtido! ♥";
+            } else {
+                botao.innerText = "Curtir ♥";
+            }
+        }
+
+        // Detecta quando o usuário digita na busca
+        campoBusca.addEventListener('input', () => {
+            mostrarCarros(campoBusca.value);
         });
 
-        // Inicializa a lista na tela
-        renderCars();
+        // Mostra todos os carros assim que a página abre
+        mostrarCarros();
     </script>
 </body>
 </html>
