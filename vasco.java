@@ -1,3 +1,31 @@
+
+// Declaração do pacote (organização de pastas)
+package com.exemplo;
+
+// Importações (bibliotecas externas)
+import java.util.List;
+
+// Declaração da classe (o nome deve ser o mesmo do arquivo)
+public class EstruturaJava {
+
+    // Variáveis / Atributos da classe
+    private String nome;
+
+    // Construtor (usado para instanciar objetos)
+    public EstruturaJava(String nome) {
+        this.nome = nome;
+    }
+
+    // Método principal (ponto de entrada do programa)
+    public static void main(String[] args) {
+        System.out.println("Estrutura funcionando!");
+    }
+
+    // Demais métodos
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+}
 package com.exemplo.garagem.controller;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
