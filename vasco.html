@@ -9,65 +9,105 @@
     
 </body>
 </html>
-package com.exemplo.garagem.controller;
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundo dos Carros Esportivos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-import java.util.ArrayList;
-import java.util.List;
+    <header>
+        <div class="logo">Super<span>Cars</span></div>
+        <nav>
+            <button class="filter-btn active" onclick="filterCars('todos')">Todos</button>
+            <button class="filter-btn" onclick="filterCars('v8')">Motores V8</button>
+            <button class="filter-btn" onclick="filterCars('eletrico')">Elétricos</button>
+        </nav>
+    </header>
 
-@RestController
-@CrossOrigin(origins = "*") // Permite que o seu HTML acesse o Java sem erros de CORS
-public class CarroController {
+    <section class="hero">
+        <h1>A Velocidade na Sua Forma Mais Pura</h1>
+        <p>Explore as máquinas mais rápidas e desejadas do planeta.</p>
+    </section>
 
-    // Classe interna para estruturar os dados do carro
-    public static class Carro {
-        public int id;
-        public String marca;
-        public String nome;
-        public String imagem;
+    <main class="gallery">
+        <div class="car-card v8">
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=500" alt="Porsche 911">
+            <div class="car-info">
+                <h3>Porsche 911 GT3</h3>
+                <p>O equilíbrio perfeito entre as pistas e as ruas.</p>
+                <button class="details-btn" onclick="openModal('Porsche 911 GT3', 'Motor: 4.0 de 6 cilindros opostos\nPotência: 510 cv\n0 a 100 km/h: 3,4 segundos\nVelocidade Máxima: 318 km/h.')">Ver Detalhes</button>
+            </div>
+        </div>
 
-        public Carro(int id, String marca, String nome, String imagem) {
-            this.id = id;
-            this.marca = marca;
-            this.nome = nome;
-            this.imagem = imagem;
-        }
-    }
+        <div class="car-card v8">
+            <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=500" alt="Ferrari">
+            <div class="car-info">
+                <h3>Ferrari F8 Tributo</h3>
+                <p>A excelência do motor V8 italiano com design aerodinâmico.</p>
+                <button class="details-btn" onclick="openModal('Ferrari F8 Tributo', 'Motor: 3.9 V8 Turbo\nPotência: 720 cv\n0 a 100 km/h: 2,9 segundos\nVelocidade Máxima: 340 km/h.')">Ver Detalhes</button>
+            </div>
+        </div>
 
-    @GetMapping("/api/carros")
-    public List<Carro> get200Carros() {
-        List<Carro> listaDeCarros = new ArrayList<>();
-        
-        // Base de marcas e modelos para o loop gerar 200 variações
-        String[][] dadosBase = {
-            {"Porsche", "911 GT3 RS"}, {"Porsche", "918 Spyder"}, {"Porsche", "Cayman GT4"},
-            {"Ferrari", "LaFerrari"}, {"Ferrari", "488 Pista"}, {"Ferrari", "SF90 Stradale"},
-            {"Lamborghini", "Aventador SVJ"}, {"Lamborghini", "Huracán STO"}, {"Lamborghini", "Revuelto"},
-            {"McLaren", "P1"}, {"McLaren", "720S"}, {"McLaren", "Senna"},
-            {"Nissan", "GT-R Nismo"}, {"Toyota", "Supra MK4"}, {"Chevrolet", "Corvette Z06"},
-            {"Ford", "Ford GT"}, {"Dodge", "Viper ACR"}, {"Audi", "R8 V10"}
-        };
+        <div class="car-card eletrico">
+            <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=500" alt="Porsche Taycan">
+            <div class="car-info">
+                <h3>Porsche Taycan Turbo S</h3>
+                <p>A alma esportiva da Porsche, movida a eletricidade pura.</p>
+                <button class="details-btn" onclick="openModal('Porsche Taycan Turbo S', 'Motor: Dois motores elétricos\nPotência: Até 761 cv (Overboost)\n0 a 100 km/h: 2,8 segundos\nAutonomia: Cerca de 412 km.')">Ver Detalhes</button>
+            </div>
+        </div>
+    </main>
 
-        String imagemPadrao = "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=300";
-        int contadorId = 1;
+    <div id="carModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Nome do Carro</h2>
+            <p id="modalSpecs">Especificações técnica...</p>
+        </div>
+    </div>
 
-        // Loop inteligente que roda até preencher exatamente 200 carros dinamicamente
-        while (listaDeCarros.size() < 200) {
-            for (String[] carroBase : dadosBase) {
-                if (listaDeCarros.size() < 200) {
-                    String marca = carroBase[0];
-                    // Adiciona uma numeração para diferenciar os 200 modelos (ex: Spec v1, Spec v2...)
-                    int versao = (contadorId / dadosBase.length) + 1;
-                    String nome = carroBase[1] + (versao > 1 ? " (Spec v" + versao + ")" : "");
-                    
-                    listaDeCarros.add(new Carro(contadorId, marca, nome, imagemPadrao));
-                    contadorId++;
+    <script>
+        // Função para Filtrar os Carros
+        function filterCars(category) {
+            const cards = document.querySelectorAll('.car-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Atualiza o botão ativo
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Mostra ou esconde os cards
+            cards.forEach(card => {
+                if (category === 'todos' || card.classList.contains(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
                 }
+            });
+        }
+
+        // Funções do Modal
+        function openModal(title, specs) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalSpecs').innerText = specs;
+            document.getElementById('carModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('carModal').style.display = 'none';
+        }
+
+        // Fechar o modal se clicar fora dele
+        window.onclick = function(event) {
+            const modal = document.getElementById('carModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
             }
         }
-
-        return listaDeCarros;
-    }
-}
+    </script>
+</body>
+</html>
