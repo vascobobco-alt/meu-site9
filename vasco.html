@@ -10,104 +10,160 @@
 </body>
 </html>
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo dos Carros Esportivos</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Garagem Suprema | Carros Esportivos</title>
+    <style>
+        /* Estilização Geral */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0b0b0b;
+            color: #fff;
+        }
+
+        header {
+            background-color: #141414;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #ff003c;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        header span {
+            color: #ff003c;
+        }
+
+        /* Container dos Carros */
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            padding: 40px 20px;
+        }
+
+        /* Cartão do Carro */
+        .card {
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 300px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: 1px solid #333;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(255, 0, 60, 0.3);
+            border-color: #ff003c;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .card-content p {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .btn-som {
+            background-color: #ff003c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-som:hover {
+            background-color: #cc0030;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #141414;
+            color: #666;
+            font-size: 0.8rem;
+            margin-top: 40px;
+        }
+    </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">Super<span>Cars</span></div>
-        <nav>
-            <button class="filter-btn active" onclick="filterCars('todos')">Todos</button>
-            <button class="filter-btn" onclick="filterCars('v8')">Motores V8</button>
-            <button class="filter-btn" onclick="filterCars('eletrico')">Elétricos</button>
-        </nav>
+        <h1>Garagem <span>Suprema</span></h1>
     </header>
 
-    <section class="hero">
-        <h1>A Velocidade na Sua Forma Mais Pura</h1>
-        <p>Explore as máquinas mais rápidas e desejadas do planeta.</p>
-    </section>
-
-    <main class="gallery">
-        <div class="car-card v8">
-            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=500" alt="Porsche 911">
-            <div class="car-info">
-                <h3>Porsche 911 GT3</h3>
-                <p>O equilíbrio perfeito entre as pistas e as ruas.</p>
-                <button class="details-btn" onclick="openModal('Porsche 911 GT3', 'Motor: 4.0 de 6 cilindros opostos\nPotência: 510 cv\n0 a 100 km/h: 3,4 segundos\nVelocidade Máxima: 318 km/h.')">Ver Detalhes</button>
+    <main class="container">
+        <div class="card" onclick="tocarSom()">
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=500" alt="Porsche Esportivo">
+            <div class="card-content">
+                <h3>Velocidade Pura</h3>
+                <p>Sinta a potência do motor boxer de seis cilindros.</p>
+                <button class="btn-som">Ouvir Motor 🔊</button>
             </div>
         </div>
 
-        <div class="car-card v8">
-            <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=500" alt="Ferrari">
-            <div class="car-info">
-                <h3>Ferrari F8 Tributo</h3>
-                <p>A excelência do motor V8 italiano com design aerodinâmico.</p>
-                <button class="details-btn" onclick="openModal('Ferrari F8 Tributo', 'Motor: 3.9 V8 Turbo\nPotência: 720 cv\n0 a 100 km/h: 2,9 segundos\nVelocidade Máxima: 340 km/h.')">Ver Detalhes</button>
-            </div>
-        </div>
-
-        <div class="car-card eletrico">
-            <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=500" alt="Porsche Taycan">
-            <div class="car-info">
-                <h3>Porsche Taycan Turbo S</h3>
-                <p>A alma esportiva da Porsche, movida a eletricidade pura.</p>
-                <button class="details-btn" onclick="openModal('Porsche Taycan Turbo S', 'Motor: Dois motores elétricos\nPotência: Até 761 cv (Overboost)\n0 a 100 km/h: 2,8 segundos\nAutonomia: Cerca de 412 km.')">Ver Detalhes</button>
+        <div class="card" onclick="tocarSom()">
+            <img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?w=500" alt="Audi Esportivo">
+            <div class="card-content">
+                <h3>Design Moderno</h3>
+                <p>Tecnologia e performance agressiva nas pistas.</p>
+                <button class="btn-som">Ouvir Motor 🔊</button>
             </div>
         </div>
     </main>
 
-    <div id="carModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h2 id="modalTitle">Nome do Carro</h2>
-            <p id="modalSpecs">Especificações técnica...</p>
-        </div>
-    </div>
+    <audio id="som-motor" src="https://www.soundjay.com/transportation/sounds/car-accelerating-01.mp3" preload="auto"></audio>
+
+    <footer>
+        <p>&copy; 2026 Garagem Suprema - Todos os direitos reservados.</p>
+    </footer>
 
     <script>
-        // Função para Filtrar os Carros
-        function filterCars(category) {
-            const cards = document.querySelectorAll('.car-card');
-            const buttons = document.querySelectorAll('.filter-btn');
+        function tocarSom() {
+            const som = document.getElementById('som-motor');
             
-            // Atualiza o botão ativo
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            // Mostra ou esconde os cards
-            cards.forEach(card => {
-                if (category === 'todos' || card.classList.contains(category)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
+            // Reinicia o som caso ele já esteja tocando
+            som.currentTime = 0; 
+            
+            // Toca o áudio
+            som.play().catch( => {
+                console.log("O navegador bloqueou o som. Clique na página primeiro!", error);
             });
-        }
-
-        // Funções do Modal
-        function openModal(title, specs) {
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalSpecs').innerText = specs;
-            document.getElementById('carModal').style.display = 'flex';
-        }
-
-        function closeModal() {
-            document.getElementById('carModal').style.display = 'none';
-        }
-
-        // Fechar o modal se clicar fora dele
-        window.onclick = function(event) {
-            const modal = document.getElementById('carModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
         }
     </script>
 </body>
