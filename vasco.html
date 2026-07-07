@@ -14,9 +14,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Garagem Suprema | Carros Esportivos</title>
+    <title>Garagem Suprema | +100 Esportivos</title>
     <style>
-        /* Estilização Geral */
         * {
             margin: 0;
             padding: 0;
@@ -31,7 +30,7 @@
 
         header {
             background-color: #141414;
-            padding: 20px;
+            padding: 30px 20px;
             text-align: center;
             border-bottom: 3px solid #ff003c;
         }
@@ -40,19 +39,43 @@
             font-size: 2.5rem;
             text-transform: uppercase;
             letter-spacing: 2px;
+            margin-bottom: 15px;
         }
 
         header span {
             color: #ff003c;
         }
 
-        /* Container dos Carros */
+        /* Barra de Busca */
+        .busca-container {
+            margin-top: 10px;
+        }
+
+        .busca-input {
+            padding: 12px 20px;
+            width: 100%;
+            max-width: 400px;
+            border: 2px solid #333;
+            border-radius: 25px;
+            background-color: #222;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .busca-input:focus {
+            border-color: #ff003c;
+        }
+
+        /* Grid de Carros */
         .container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
             padding: 40px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         /* Cartão do Carro */
@@ -60,38 +83,43 @@
             background-color: #1a1a1a;
             border-radius: 10px;
             overflow: hidden;
-            width: 300px;
             transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
             border: 1px solid #333;
+            display: flex;
+            flex-direction: column;
         }
 
         .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(255, 0, 60, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 0, 60, 0.2);
             border-color: #ff003c;
         }
 
         .card img {
             width: 100%;
-            height: 200px;
+            height: 180px;
             object-fit: cover;
         }
 
         .card-content {
-            padding: 20px;
+            padding: 15px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
         }
 
         .card-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
             text-transform: uppercase;
         }
 
         .card-content p {
             color: #aaa;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             margin-bottom: 15px;
         }
 
@@ -99,12 +127,12 @@
             background-color: #ff003c;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 8px 15px;
             font-weight: bold;
             text-transform: uppercase;
             border-radius: 5px;
             cursor: pointer;
-            transition: background 0.2s;
+            font-size: 0.8rem;
         }
 
         .btn-som:hover {
@@ -125,46 +153,86 @@
 
     <header>
         <h1>Garagem <span>Suprema</span></h1>
+        <div class="busca-container">
+            <input type="text" id="busca" class="busca-input" placeholder="Pesquise entre os 100+ carros..." oninput="filtrarCarros()">
+        </div>
     </header>
 
-    <main class="container">
-        <div class="card" onclick="tocarSom()">
-            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=500" alt="Porsche Esportivo">
-            <div class="card-content">
-                <h3>Velocidade Pura</h3>
-                <p>Sinta a potência do motor boxer de seis cilindros.</p>
-                <button class="btn-som">Ouvir Motor 🔊</button>
-            </div>
-        </div>
-
-        <div class="card" onclick="tocarSom()">
-            <img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?w=500" alt="Audi Esportivo">
-            <div class="card-content">
-                <h3>Design Moderno</h3>
-                <p>Tecnologia e performance agressiva nas pistas.</p>
-                <button class="btn-som">Ouvir Motor 🔊</button>
-            </div>
-        </div>
-    </main>
+    <main class="container" id="vitrine-carros"></main>
 
     <audio id="som-motor" src="https://www.soundjay.com/transportation/sounds/car-accelerating-01.mp3" preload="auto"></audio>
 
     <footer>
-        <p>&copy; 2026 Garagem Suprema - Todos os direitos reservados.</p>
+        <p>&copy; 2026 Garagem Suprema - Coleção de Superesportivos.</p>
     </footer>
 
     <script>
-        function tocarSom() {
-            const som = document.getElementById('som-motor');
+        // Array que vai armazenar os 100 carros
+        const listaCarros = [];
+
+        // Marcas e modelos para gerar os dados falsos de forma variada
+        const marcas = ["Ferrari", "Lamborghini", "Porsche", "McLaren", "Aston Martin", "Bugatti", "Audi R8", "Nissan GTR", "Corvette", "Mustang Shelby"];
+        const imagens = [
+            "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400",
+            "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?w=400",
+            "https://images.unsplash.com/photo-1617788138017-80ad40651399?w=400",
+            "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=400"
+        ];
+
+        // Loop para gerar 102 carros automaticamente
+        for (let i = 1; i <= 102; i++) {
+            const marcaAleatoria = marcas[Math.floor(Math.random() * marcas.length)];
+            const imagemAleatoria = imagens[Math.floor(Math.random() * imagens.length)];
             
-            // Reinicia o som caso ele já esteja tocando
-            som.currentTime = 0; 
-            
-            // Toca o áudio
-            som.play().catch( => {
-                console.log("O navegador bloqueou o som. Clique na página primeiro!", error);
+            listaCarros.push({
+                id: i,
+                nome: `${marcaAleatoria} V${Math.random() > 0.5 ? '8' : '12'} - Modelo #${i}`,
+                desc: `Superesportivo de alta performance com aerodinâmica avançada e tecnologia de pista.`,
+                img: imagemAleatoria
             });
         }
+
+        const vitrine = document.getElementById('vitrine-carros');
+
+        // Função para renderizar os carros na tela
+        function renderizarCarros(carros) {
+            vitrine.innerHTML = ""; // Limpa a tela antes de desenhar
+            
+            carros.forEach(carro => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.setAttribute('onclick', 'tocarSom()');
+                
+                card.innerHTML = `
+                    <img src="${carro.img}" alt="${carro.nome}">
+                    <div class="card-content">
+                        <h3>${carro.nome}</h3>
+                        <p>${carro.desc}</p>
+                        <button class="btn-som">Ouvir Motor 🔊</button>
+                    </div>
+                `;
+                vitrine.appendChild(card);
+            });
+        }
+
+        // Função de filtro para a barra de pesquisa
+        function filtrarCarros() {
+            const termoBusca = document.getElementById('busca').value.toLowerCase();
+            const carrosFiltrados = listaCarros.filter(carro => 
+                carro.nome.toLowerCase().includes(termoBusca)
+            );
+            renderizarCarros(carrosFiltrados);
+        }
+
+        // Função para tocar o som do motor
+        function tocarSom() {
+            const som = document.getElementById('som-motor');
+            som.currentTime = 0; 
+            som.play().catch(error => console.log("Clique interativo necessário para som."));
+        }
+
+        // Inicializa a página mostrando todos os carros criados
+        renderizarCarros(listaCarros);
     </script>
 </body>
 </html>
